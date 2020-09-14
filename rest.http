@@ -1,0 +1,118 @@
+### Register
+POST http://localhost:8000/api/register
+content-type: application/json
+
+{
+    "name":"freecodecamp",
+    "email":"free@email.com",
+    "password":"1234"
+}
+
+
+### Login
+
+POST http://localhost:8000/api/login
+content-type: application/json
+
+{
+    "email":"free@email.com",
+    "password":"1234"
+}
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJmcmVlQGVtYWlsLmNvbSIsImV4cCI6MTU5NTYyOTY3MzczN30.X81Yr8g5UMCOFKoeAEi1OtLl6CjF8gOZWcgo9Exp520
+### Get all surveys
+GET http://localhost:8000/api/surveys
+Authorization: Bearer {{token}}
+
+
+### Get A single survey
+GET  http://localhost:8000/api/survey/5f174a3600978790002ac6bd
+Authorization: Bearer {{token}}
+
+
+### create survey
+POST http://localhost:8000/api/surveys
+content-type:application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Node Course",
+  "description": "We want to understand how much you liked the Deno course"
+}
+
+
+### update survey
+PUT http://localhost:8000/api/update/5f174aa400bd81b6002ac6be
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name":"Deno course"
+}
+
+
+### Delete a survey
+DELETE http://localhost:8000/api/deleteSurvey/5f17449800c8004700b54a79
+Authorization: Bearer {{token}}
+
+
+###############################################
+### QUESIONS
+###############################################
+
+### Get questions for survey
+GET http://localhost:8000/api/survey/5f174aa400bd81b6002ac6be/questions
+Authorization: Bearer {{token}}
+
+### Get Single Question
+GET http://localhost:8000/api/question/5f18945c00630e6e00a6691c
+Authorization: Bearer {{token}}
+
+### Create question for survey
+POST http://localhost:8000/api/question/5f174aa400bd81b6002ac6be
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "text": "How is your experience in Tpyescript ?",
+  "type": "choice",
+  "required": true,
+  "data": {
+    "multiple" : false,
+    "answers" : ["A little", "A good experience", "Very good experience"]
+  }
+}
+
+
+### Update question
+put http://localhost:8000/api/question/5f18945c00630e6e00a6691c
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "text": "How much you liked the Node Course?",
+  "type": "choice",
+  "required": true,
+  "data": {
+    "multiple": false,
+    "answers": [
+      "I liked it very much", 
+      "I liked it",
+      "I did not like it",
+      "I hate it"
+    ]
+  }
+}
+
+
+### Delete Single Question
+DELETE http://localhost:8000/api/question/5f18964f003cd2c800362e8a
+Authorization: Bearer {{token}}
+
+
+###############################################
+### ANSWERS
+###############################################
+
+GET http://localhost:8000/api/survey/5f174aa400bd81b6002ac6be/questions
+Authorization: Bearer {{token}}

@@ -1,0 +1,27 @@
+
+<%- await include(`views/partials/header.ejs`) %>
+
+<div class="container">
+
+<h4>Active Surveys</h4>
+
+<% if(surveys.length == 0){ %>
+  <h5>No surveys</h5>
+<% } else { %>
+
+<% for( let survey of surveys ){ %>
+    
+<div class="card survey-card mb-3">
+<a href="/survey/<%= survey.id %>">
+  <div class="card-body">
+    <h5><%= survey.name %></h5>
+    <p class="card-text"><%= survey.description %></p>
+  </div>
+</a>
+
+</div>
+<% } %>
+<% } %>
+</div>
+
+<%- await include(`views/partials/footer.ejs`) %>
